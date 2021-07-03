@@ -3,55 +3,11 @@
 <head>
   <meta charset="utf-8">
   <title>Hello World</title>
+  <script src="https://pixijs.download/v6.0.4/pixi.js"></script>
+
 </head>
-<script src="https://pixijs.download/v6.0.4/pixi.js"></script>
 <body>
-  <script type="text/javascript">
-    let type = "WebGL"
-    if(!PIXI.utils.isWebGLSupported()){
-      type = "canvas"
-    }
-    PIXI.utils.sayHello(type)
-    //Create a Pixi Application
-    let app = new PIXI.Application({width: 256, height: 256});
 
-    document.body.appendChild(app.view);
-
-    // create a new Sprite from an image path
-    const cat = PIXI.Sprite.from('images/cat.png');
-
-    // center the sprite's anchor point
-    cat.anchor.set(0.5);
-
-    // move the sprite to the center of the screen
-    cat.x = app.screen.width / 2;
-    cat.y = app.screen.height / 2;
-
-    app.stage.addChild(cat);
-
-    // Listen for animate update
-    app.ticker.add((delta) => {
-      // just for fun, let's rotate mr rabbit a little
-      // delta is 1 if running at 100% performance
-      // creates frame-independent transformation
-      cat.rotation += 0.1 * delta;
-    });
-
-
-    // This runs.
-    function setup() {
-
-      let sprite = new PIXI.Sprite(
-              PIXI.loader.resources["images/animals.png"].texture
-      );
-      //Add the canvas that Pixi automatically created for you to the HTML document
-      document.body.appendChild(app.view);
-      console.log("running");
-    }
-
-
-
-
-  </script>
 </body>
+<script type="text/javascript" src="./game.js"></script>
 </html>
