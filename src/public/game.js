@@ -26,6 +26,13 @@ function runGame() {
     // }
     document.body.appendChild(app.view);
 
+    // Hold results so we can clear them later.
+    const gameState = {
+        displayedIcons: [],
+        message:null
+    }
+
+    // For rendering text
     const messageStyle = new PIXI.TextStyle({
         fontFamily: 'Arial',
         fontSize: 36,
@@ -44,10 +51,7 @@ function runGame() {
         lineJoin: 'round',
     });
 
-
-
-
-// create a new Sprite from an image path
+// create a new Sprite from an image path, with 2 textures for up/down.
     const slotmachineUp = PIXI.Texture.from('/images/slotmachine.png');
     const slotmachineDown =  PIXI.Texture.from('/images/slotmachine-down.png');
 
@@ -89,18 +93,13 @@ function runGame() {
         return results;
     }
 
-    // Hold results so we can clear them later.
-    const gameState = {
-      displayedIcons: [],
-      message:null
-    }
+
 
     clearResults = () => {
         if(!gameState.displayedIcons) {
             gameState.displayedIcons=[];
         } else {
             gameState.displayedIcons.forEach(val => {
-                console.log(val);
                 app.stage.removeChild(val)
             })
         }
